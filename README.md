@@ -11,9 +11,9 @@ would (and more!):
 
 ## What do I need installed
 
-Only the Go related tooling. Get it at [the Go website](gowebsite).
+Only the Go related tooling. Get it at [the Go website](https://golang.org).
 
-It doesn't hurt to get familiar with Go by following [the Go Tour](gotour) and [How to Write Go Code](gocode) and [Effective Go](goeffective).
+It doesn't hurt to get familiar with Go by following [the Go Tour](https://tour.golang.org) and [How to Write Go Code](https://golang.org/doc/code.html) and [Effective Go](https://golang.org/doc/effective_go.html).
 
 ## How to Use
 
@@ -106,31 +106,19 @@ The file names are pretty descriptive in what they contain, but here is a rundow
 
 This boilerplate contains the following libraries:
 
-- [Viper](viper), for configuration (files, environment variables, etc)
-- [Chi](chi), a fast and flexible HTTP router
-- [The NewRelic Go Agent](nrgo) for instrumentation
-- [Log15](log15) for logging
-- [pq](pq), a high performance PostgreSQL driver
-- [The Go AWS SDK](goaws) for AWS services: SQS, SNS, etc.
+- [Viper](https://github.com/spf13/viper), for configuration (files, environment variables, etc)
+- [Chi](https://github.com/go-chi/chi), a fast and flexible HTTP router
+- [The NewRelic Go Agent](https://github.com/newrelic/go-agent) for instrumentation
+- [Log15](https://github.com/inconshreveable/log15) for logging
+- [pq](https://github.com/lib/pq), a high performance PostgreSQL driver
+- [The Go AWS SDK](https://docs.aws.amazon.com/sdk-for-go/api/) for AWS services: SQS, SNS, etc.
 
 This project contains examples on how to use these libraries, but not all use cases are covered.
 Refer to the documentations of these libraries in order to better understand how to configure or do things not covered
 by this documentation.
 
 Go usually has a lot of important aspects of application development already available in the standard library,
-such as HTTP, JSON, text (and HTML) templates. Remember to [skim through the Go stdlib](gostdlib), you just might find
+such as HTTP, JSON, text (and HTML) templates. Remember to [skim through the Go stdlib](https://golang.org/pkg/#stdlib), you just might find
 something there and avoid adding a third party dependency.
 
 However, feel free to add or remove dependencies to your application as you see fit.
-
-[viper]: https://github.com/spf13/viper
-[chi]: https://github.com/go-chi/chi
-[nrgo]: https://github.com/newrelic/go-agent
-[log15]: https://github.com/inconshreveable/log15
-[pq]: https://github.com/lib/pq
-[goaws]: https://docs.aws.amazon.com/sdk-for-go/api/
-[gostdlib]: https://golang.org/pkg/#stdlib
-[gowebsite]: https://golang.org
-[gotour]: https://tour.golang.org
-[goeffective]: https://golang.org/doc/effective_go.html
-[gocode]: https://golang.org/doc/code.html
