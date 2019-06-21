@@ -107,7 +107,7 @@ The file names are pretty descriptive in what they contain, but here is a rundow
 This boilerplate contains the following libraries:
 
 - [Viper](viper), for configuration (files, environment variables, etc)
-- [httptreemux](httptreemux), a fast and flexible HTTP router
+- [Chi](chi), a fast and flexible HTTP router
 - [The NewRelic Go Agent](nrgo) for instrumentation
 - [Log15](log15) for logging
 - [pq](pq), a high performance PostgreSQL driver
@@ -124,7 +124,7 @@ something there and avoid adding a third party dependency.
 However, feel free to add or remove dependencies to your application as you see fit.
 
 [viper]: https://github.com/spf13/viper
-[httptreemux]: https://github.com/dimfeld/httptreemux
+[chi]: https://github.com/go-chi/chi
 [nrgo]: https://github.com/newrelic/go-agent
 [log15]: https://github.com/inconshreveable/log15
 [pq]: https://github.com/lib/pq
