@@ -31,6 +31,12 @@ $ mv go-boilerplate myapp
 
 5) Change your module name in go.mod
 
+6) Change every reference to `github.com/nubunto/go-boilerplate` to your new package name
+```
+$ grep -rl 'goservice' | xargs sed -i s/goservice/<<YOUR APP NAME HERE>>/g
+$ grep -rl 'github.com\/nubunto\/go-boilerplate' | xargs sed -i s/github.com\/nubunto\/go-boilerplate/<<YOUR PACKAGE NAME HERE>>/g
+```
+
 6) Run:
 ```
 $ cd go-boilerplate
