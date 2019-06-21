@@ -27,9 +27,11 @@ $ git clone github.com/nubunto/go-boilerplate
 $ mv go-boilerplate myapp
 ```
 
-3) Change your module name in go.mod
+4) Change the package name from the `user.go` file to your chosen package name
 
-4) Run:
+5) Change your module name in go.mod
+
+6) Run:
 ```
 $ cd go-boilerplate
 $ go build -tags local ./cmd/http
