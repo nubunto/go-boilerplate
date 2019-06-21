@@ -17,27 +17,12 @@ It doesn't hurt to get familiar with Go by following [the Go Tour](https://tour.
 
 ## How to Use
 
-1) Clone this repo
+1. Clone this repo
 ```
 $ git clone github.com/nubunto/go-boilerplate
 ```
 
-2) Change your package name to whatever you want
-```
-$ mv go-boilerplate myapp
-```
-
-4) Change the package name from the `user.go` file to your chosen package name
-
-5) Change your module name in go.mod
-
-6) Change every reference to `github.com/nubunto/go-boilerplate` to your new package name
-```
-$ grep -rl 'goservice' | xargs sed -i s/goservice/<<YOUR APP NAME HERE>>/g
-$ grep -rl 'github.com\/nubunto\/go-boilerplate' | xargs sed -i s/github.com\/nubunto\/go-boilerplate/<<YOUR PACKAGE NAME HERE>>/g
-```
-
-6) Run:
+2. Run:
 ```
 $ cd go-boilerplate
 $ go build -tags local ./cmd/http
