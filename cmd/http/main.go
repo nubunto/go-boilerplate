@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"bitbucket.org/ifood/goservice/cmd/http/services"
+	"github.com/nubunto/go-boilerplate/cmd/http/services"
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
 )

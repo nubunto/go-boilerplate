@@ -7,7 +7,7 @@ import (
 
 	"github.com/go-chi/chi"
 
-	"bitbucket.org/ifood/goservice/cmd/http/services"
+	"github.com/nubunto/go-boilerplate/cmd/http/services"
 
 	log "github.com/inconshreveable/log15"
 

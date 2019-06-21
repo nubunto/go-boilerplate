@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"bitbucket.org/ifood/goservice"
+	"github.com/nubunto/go-boilerplate"
 	"github.com/go-chi/render"
 )
 

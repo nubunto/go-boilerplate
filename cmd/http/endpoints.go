@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"bitbucket.org/ifood/goservice/cmd/http/services"
+	"github.com/nubunto/go-boilerplate/cmd/http/services"
 	"github.com/go-chi/render"
 	log "github.com/inconshreveable/log15"
 )

@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 
-	"bitbucket.org/ifood/goservice/cmd/http/services"
+	"github.com/nubunto/go-boilerplate/cmd/http/services"
 
 	log "github.com/inconshreveable/log15"
 	"github.com/spf13/viper"

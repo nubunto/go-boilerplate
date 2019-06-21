@@ -1,7 +1,7 @@
 package services
 
 import (
-	"bitbucket.org/ifood/goservice"
+	"github.com/nubunto/go-boilerplate"
 	"github.com/jmoiron/sqlx"
 )
 
