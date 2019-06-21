@@ -21,11 +21,14 @@ It doesn't hurt to get familiar with Go by following [the Go Tour](gotour) and [
 ```
 $ git clone github.com/nubunto/go-boilerplate
 ```
+
 1) Change your package name to whatever you want
 ```
 $ mv go-boilerplate myapp
 ```
+
 1) Change your module name in go.mod
+
 1) Run:
 ```
 $ cd go-boilerplate
