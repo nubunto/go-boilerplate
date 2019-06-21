@@ -1,6 +1,6 @@
-# iFood Go Starter
+# Go Starter
 
-This is a boilerplate project for iFood. It contains what most of your typical iFood Java program
+This is a boilerplate Go project. It contains what most of your typical REST program
 would (and more!):
 
 * New Relic for instrumentation/monitoring
@@ -19,7 +19,7 @@ It doesn't hurt to get familiar with Go by following [the Go Tour](gotour) and [
 
 1) Clone this repo
 ```
-$ git clone bitbucket.org/ifood/ifood-go-starter
+$ git clone github.com/nubunto/go-boilerplate
 ```
 1) Run:
 ```
