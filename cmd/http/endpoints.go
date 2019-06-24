@@ -44,6 +44,6 @@ func snsPushEndpoint(logger log.Logger, pushService *services.PushService) http.
 		if err != nil {
 			render.Render(w, r, ErrRender(err, http.StatusInternalServerError))
 		}
-		logger.Debug("sent message, got message id %v", mid)
+		logger.Debug("sent message", "message id", mid)
 	}
 }

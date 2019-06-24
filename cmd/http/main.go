@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/nubunto/go-boilerplate/cmd/http/services"
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
+	"github.com/nubunto/go-boilerplate/cmd/http/services"
 )
 
 func main() {
@@ -16,7 +16,7 @@ func main() {
 	rootlog := RootLogger(config)
 
 	// initialize database
-	db, err := sqlx.Connect("postgres", config.GetString("datasource"))
+	db, err := sqlx.Open("postgres", config.GetString("datasource"))
 	if err != nil {
 		panic(fmt.Errorf("error connecting to postgres: %v", err))
 	}
