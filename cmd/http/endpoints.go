@@ -4,22 +4,17 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/nubunto/go-boilerplate/cmd/http/services"
-	"github.com/go-chi/render"
 	log "github.com/inconshreveable/log15"
 )
 
-func listUsersEndpoint(userService *services.UserService) http.HandlerFunc {
+func listUsersEndpoint(userService UserService) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		users, err := userService.FetchAll()
 		if err != nil {
-			render.Render(w, r, ErrRender(err, http.StatusInternalServerError))
+			RenderJSON(w, http.StatusInternalServerError, NewErrResponse(err))
 			return
 		}
-		if err := render.RenderList(w, r, NewUserListResponse(users)); err != nil {
-			render.Render(w, r, ErrRender(err, http.StatusUnprocessableEntity))
-			return
-		}
+		RenderJSON(w, http.StatusOK, NewUsersResponse(users))
 	}
 }
 
@@ -27,12 +22,12 @@ func healthEndpoint() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		_, err := fmt.Fprintf(w, "OK")
 		if err != nil {
-			render.Render(w, r, ErrRender(err, http.StatusInternalServerError))
+			RenderJSON(w, http.StatusInternalServerError, NewErrResponse(err))
 		}
 	}
 }
 
-func snsPushEndpoint(logger log.Logger, pushService *services.PushService) http.HandlerFunc {
+func snsPushEndpoint(logger log.Logger, pushService PushService) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		// use your own typed message here instead of a map
 		// e.g. type MyMessage struct {...}
@@ -42,7 +37,7 @@ func snsPushEndpoint(logger log.Logger, pushService *services.PushService) http.
 		}
 		mid, err := pushService.PushMessage(message)
 		if err != nil {
-			render.Render(w, r, ErrRender(err, http.StatusInternalServerError))
+			RenderJSON(w, http.StatusInternalServerError, NewErrResponse(err))
 		}
 		logger.Debug("sent message", "message id", mid)
 	}

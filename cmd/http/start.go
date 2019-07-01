@@ -6,14 +6,12 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/nubunto/go-boilerplate/cmd/http/services"
-
 	log "github.com/inconshreveable/log15"
 	newrelic "github.com/newrelic/go-agent"
 	"github.com/spf13/viper"
 )
 
-func startApp(config *viper.Viper, logger log.Logger, userService *services.UserService, pushService *services.PushService) {
+func startApp(config *viper.Viper, logger log.Logger, env *Env) {
 	host := config.GetString("host")
 	appName := config.GetString("appname")
 	nrLicense := config.GetString("new_relic_license")
@@ -23,7 +21,7 @@ func startApp(config *viper.Viper, logger log.Logger, userService *services.User
 		logger.Error("error creating New Relic Application", "err", err)
 		os.Exit(1)
 	}
-	router := NewRouter(nrApp, logger, userService, pushService)
+	router := NewRouter(nrApp, logger, env)
 	server := &http.Server{
 		Addr:    host,
 		Handler: router,

@@ -5,7 +5,7 @@ go 1.12
 require (
 	github.com/aws/aws-sdk-go v1.19.49
 	github.com/go-chi/chi v4.0.2+incompatible
-	github.com/go-chi/render v1.0.1
+	github.com/go-chi/render v1.0.1 // indirect
 	github.com/inconshreveable/log15 v0.0.0-20180818164646-67afb5ed74ec
 	github.com/jmoiron/sqlx v1.2.0
 	github.com/lib/pq v1.1.1

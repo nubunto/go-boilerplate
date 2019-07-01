@@ -1,33 +1,48 @@
 package main
 
 import (
+	"encoding/json"
+	"fmt"
 	"net/http"
 
-	"github.com/nubunto/go-boilerplate"
-	"github.com/go-chi/render"
+	goservice "github.com/nubunto/go-boilerplate"
 )
 
-type UserResponse struct {
-	User goservice.User
-}
-
-func (ur *UserResponse) Render(w http.ResponseWriter, r *http.Request) error {
+func RenderJSON(w http.ResponseWriter, code int, data interface{}) error {
+	m, err := json.Marshal(data)
+	if err != nil {
+		return fmt.Errorf("error marshaling json: %v", err)
+	}
+	w.WriteHeader(code)
+	_, err = w.Write(m)
+	if err != nil {
+		return fmt.Errorf("error writing response to wire: %v", err)
+	}
 	return nil
 }
 
-func NewUserListResponse(users []goservice.User) []render.Renderer {
-	list := make([]render.Renderer, len(users))
-	for _, user := range users {
-		list = append(list, &UserResponse{User: user})
-	}
-	return list
+type UserResponse struct {
+	User goservice.User `json:"user"`
 }
 
-func ErrRender(err error, code int) render.Renderer {
+type UsersResponse struct {
+	Users []UserResponse `json:"users"`
+}
+
+func NewUsersResponse(users []goservice.User) *UsersResponse {
+	r := &UsersResponse{
+		Users: make([]UserResponse, len(users)),
+	}
+	for i, u := range users {
+		r.Users[i] = UserResponse{u}
+	}
+	return r
+}
+
+func NewErrResponse(err error) *ErrResponse {
 	return &ErrResponse{
-		Err:            err,
-		HTTPStatusCode: code,
-		ErrorText:      err.Error(),
+		Err:       err,
+		ErrorText: err.Error(),
 	}
 }
 
@@ -35,12 +50,5 @@ type ErrResponse struct {
 	Err            error `json:"-"`
 	HTTPStatusCode int   `json:"-"`
 
-	StatusText string `json:"status"`
-	ErrorText  string `json:"error"`
-}
-
-func (e *ErrResponse) Render(w http.ResponseWriter, r *http.Request) error {
-	render.Status(r, e.HTTPStatusCode)
-	e.StatusText = http.StatusText(e.HTTPStatusCode)
-	return nil
+	ErrorText string `json:"error"`
 }

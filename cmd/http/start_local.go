@@ -6,16 +6,14 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/nubunto/go-boilerplate/cmd/http/services"
-
 	log "github.com/inconshreveable/log15"
 	"github.com/spf13/viper"
 )
 
-func startApp(config *viper.Viper, logger log.Logger, userService *services.UserService, pushService *services.PushService) {
+func startApp(config *viper.Viper, logger log.Logger, env *Env) {
 	host := config.GetString("host")
 	logger.Info("starting local HTTP server", "host", host)
-	router := NewRouter(nil, logger, userService, pushService)
+	router := NewRouter(nil, logger, env)
 	server := &http.Server{
 		Addr:    host,
 		Handler: router,

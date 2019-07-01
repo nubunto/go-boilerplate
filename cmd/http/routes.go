@@ -3,20 +3,15 @@ package main
 import (
 	"net/http"
 
-	"github.com/go-chi/chi/middleware"
-
 	"github.com/go-chi/chi"
-
-	"github.com/nubunto/go-boilerplate/cmd/http/services"
-
+	"github.com/go-chi/chi/middleware"
 	log "github.com/inconshreveable/log15"
-
 	newrelic "github.com/newrelic/go-agent"
 )
 
 // NewRouter returns a router that contains this project's
 // HTTP routes.
-func NewRouter(app newrelic.Application, logger log.Logger, userService *services.UserService, pushService *services.PushService) *chi.Mux {
+func NewRouter(app newrelic.Application, logger log.Logger, env *Env) *chi.Mux {
 	router := chi.NewRouter()
 	// middleware for all routes
 	router.Use(middleware.Recoverer)
@@ -27,8 +22,8 @@ func NewRouter(app newrelic.Application, logger log.Logger, userService *service
 		// middleware for /users route only
 		// r.Use(...)
 		// GET /users/, instrumented by New Relic
-		r.Get(WithNewRelic(app, "/", listUsersEndpoint(userService)))
-		r.Post(WithNewRelic(app, "/", snsPushEndpoint(logger, pushService)))
+		r.Get(WithNewRelic(app, "/", listUsersEndpoint(env.UserService)))
+		r.Post(WithNewRelic(app, "/", snsPushEndpoint(logger, env.PushService)))
 	})
 
 	// GET /health, not instrumented by New Relic
